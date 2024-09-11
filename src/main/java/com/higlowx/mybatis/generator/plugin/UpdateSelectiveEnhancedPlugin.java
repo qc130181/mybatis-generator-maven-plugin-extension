@@ -73,12 +73,6 @@ public class UpdateSelectiveEnhancedPlugin extends BasePlugin implements IUpdate
             FormatTools.addMethodWithBestPosition(interfaze, methodKey, introspectedTable);
         }
 
-        // 生成的新类导包
-//        Set<FullyQualifiedJavaType> importTypes = new TreeSet<>();
-//        FullyQualifiedJavaType importEnum = new FullyQualifiedJavaType(introspectedTable.getRules().calculateAllFieldsClass().getFullyQualifiedName() + ModelEnumPlugin.ENUM);
-//        importTypes.add(importEnum);
-//        interfaze.addImportedTypes(importTypes);
-
         return super.clientGenerated(interfaze,introspectedTable);
     }
 
@@ -164,8 +158,6 @@ public class UpdateSelectiveEnhancedPlugin extends BasePlugin implements IUpdate
         // column枚举
         FullyQualifiedJavaType selectiveType = new FullyQualifiedJavaType(fullFieldModel.getShortName() +  ModelEnumPlugin.ENUM);
         method.addParameter(new Parameter(selectiveType, "selective", "@Param(\"selective\")", true));
-        // 生成的新类导包
-        interfaze.addImportedType(selectiveType);
         return true;
     }
 
